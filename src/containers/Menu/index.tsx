@@ -30,12 +30,12 @@ export class Menu extends React.Component<Menu.Props, Menu.State> {
         <div style={descriptionBoxStyle}>
           Select if you want an existing mentometer session or if you would like to host one yourself.
         </div>
-        <Link to='host' style={{ textDecoration: 'none' }}>
+        <Link to='mentometer' style={{ textDecoration: 'none' }}>
           <Button raised style={menuButtonStyle}>
             Join mentometer
           </Button>
         </Link>
-        <Link to='mentometer' style={{ textDecoration: 'none' }}>
+        <Link to='host' style={{ textDecoration: 'none' }}>
           <Button raised style={menuButtonStyle}>
             Host mentometer
           </Button>

@@ -7,16 +7,12 @@ const initialState: HostState = {
   connectedClients: []
 }
 
-export default handleActions<any, any>({
+export default handleActions<HostState, any>({
   [Actions.MESSAGE]: (state, action) => {
     console.log('message', action)
-    return {}
+    return { ...state }
   },
   ['mentometerServerId']: (state, action) => {
-    console.log('host mentometer server id', action.payload)
-    return {
-      serverId: action.payload,
-      ...state
-    }
+    return { ...state, serverId: action.payload }
   }
 }, initialState);

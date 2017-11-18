@@ -5,10 +5,13 @@ import { connect } from 'react-redux'
 import { RouteComponentProps, Switch, Route } from 'react-router'
 import { RootState } from '../../reducers'
 import { Header, MainSection } from '../../components'
+import { ConnectionStep } from './components/ConnectionStep'
 
 export namespace Host {
   export interface Props extends RouteComponentProps<void> {
     actions: typeof HostActions
+    serverId: string
+    connectedClients: any[]
   }
 
   export interface State {
@@ -26,10 +29,11 @@ export class Host extends React.Component<Host.Props, Host.State> {
   }
 
   render() {
-    const { children, actions: { createMentometer } } = this.props
+    const { children, serverId, connectedClients } = this.props
+    console.log(connectedClients)
     return (
       <div>
-        Host
+        <ConnectionStep serverId={serverId} connectedClients={connectedClients} />
       </div>
     )
   }
@@ -37,7 +41,8 @@ export class Host extends React.Component<Host.Props, Host.State> {
 
 function mapStateToProps(state: RootState) {
   return {
-    todos: state.todos
+    serverId: state.host.serverId,
+    connectedClients: state.host.connectedClients
   }
 }
 
