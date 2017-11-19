@@ -6,12 +6,16 @@ import { RouteComponentProps, Switch, Route } from 'react-router'
 import { RootState } from '../../reducers'
 import { Header, MainSection } from '../../components'
 import { ConnectionStep } from './components/ConnectionStep'
+import { VoteScreen } from './components/VoteScreen'
 
 export namespace Host {
   export interface Props extends RouteComponentProps<void> {
     actions: typeof HostActions
     serverId: string
-    connectedClients: any[]
+    connectedClients: number
+    hostStep: number
+    voteStatistics: IVoteStatistics
+    userHasVoted: boolean
   }
 
   export interface State {
@@ -25,15 +29,14 @@ export class Host extends React.Component<Host.Props, Host.State> {
   componentDidMount() {
     const { actions: { createMentometer } } = this.props
     createMentometer()
-    console.log('component did mountt')
   }
 
   render() {
-    const { children, serverId, connectedClients } = this.props
-    console.log(connectedClients)
+    const { hostStep, children, serverId, connectedClients, voteStatistics, userHasVoted, actions: { startSession, startVote, vote } } = this.props
     return (
       <div>
-        <ConnectionStep serverId={serverId} connectedClients={connectedClients} />
+        {hostStep === 0 && <ConnectionStep serverId={serverId} connectedClients={connectedClients} startSession={startSession}/>}
+        {hostStep === 1 && <VoteScreen startVote={startVote} vote={vote} voteStatistics={voteStatistics} connectedClients={connectedClients} userHasVoted={userHasVoted} />}
       </div>
     )
   }
@@ -42,7 +45,10 @@ export class Host extends React.Component<Host.Props, Host.State> {
 function mapStateToProps(state: RootState) {
   return {
     serverId: state.host.serverId,
-    connectedClients: state.host.connectedClients
+    connectedClients: state.host.connectedClients,
+    hostStep: state.host.hostStep,
+    voteStatistics: state.vote.voteStatistics,
+    userHasVoted: state.vote.userHasVoted
   }
 }
 

@@ -9,7 +9,7 @@ export function configureStore(initialState?: RootState) {
   // let middleware = applyMiddleware(logger)
 
   console.log(io)
-  const socket = io('http://localhost:4000')
+  const socket = io('http://192.168.2.159:4000')
   let middleware = applyMiddleware(createSocketIoMiddleware(socket, "server/"))
 
   if (process.env.NODE_ENV === 'development') {

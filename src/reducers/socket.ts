@@ -13,5 +13,5 @@ export default handleActions<any, any>({
   ['mentometerServerId']: (state, action) => {
     console.log('mentometer server id', action)
     return {}
-  }
+  },
 }, initialState);

@@ -27,6 +27,7 @@ class App extends React.Component<App.Props, App.State> {
 
   render() {
     const { todos, actions, children } = this.props
+    console.log(actions)
     return (
       <div style={AppContainerStyle}>
         <Header />

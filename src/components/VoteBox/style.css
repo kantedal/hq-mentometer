@@ -1,0 +1,46 @@
+.voteStartScreen {
+  width: calc(100% - 80px);
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.voteInfoText {
+  width: 100%;
+  text-align: center;
+  font-weight: 200;
+  font-family: Roboto;
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.progressBar {
+  height: 20px !important;
+  border-radius: 5px;
+  margin-top: 17px;
+}
+
+.progressBarRow {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+}
+
+.progressBarVoteButton {
+  width: 70px; 
+}
+
+.progressBarBox {
+  flex: 1;
+}
+
+.finishVoteButton {
+  color: #fff !important;
+  margin-top: 50px;
+  font-size: 28px !important;
+  width: 100%;
+  font-weight: 400 !important;
+}
+
+.voteBox {
+}
