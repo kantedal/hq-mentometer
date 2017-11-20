@@ -18,7 +18,7 @@ export namespace VoteScreen {
 
 export class VoteScreen extends React.Component<VoteScreen.Props, VoteScreen.State> {
   render() {
-    const { vote, connectedClients, voteStatistics, userHasVoted } = this.props
+    const { vote, connectedClients, voteStatistics, userHasVoted, startVote } = this.props
     return (
       <div className={style.voteStartScreen}>
         <div className={style.voteInfoText}>
@@ -27,16 +27,18 @@ export class VoteScreen extends React.Component<VoteScreen.Props, VoteScreen.Sta
   
         <VoteBox vote={vote} voteStatistics={voteStatistics} connectedClients={connectedClients} userHasVoted={userHasVoted} />
   
-        <Button className={style.finishVoteButton}>
-          Finish vote
+        <Button onClick={() => startVote()} style={{marginTop: '50px'}} className={style.finishVoteButton}>
+          New vote
         </Button>
-  
+
+        <Button className={style.finishVoteButton}>
+          Finish session
+        </Button>
       </div>
     )
   }
 
   componentDidMount() {
-    console.log('component did mount')
     this.props.startVote()
   }
 }

@@ -10,6 +10,7 @@ import { CSSProperties } from 'react'
 import Button from 'material-ui/Button'
 import { ConnectionStep } from './components/ConnectionStep'
 import { VoteStep } from './components/VoteStep/index';
+import { WaitingStep } from './components/WaitingStep/index';
 
 export namespace Mentometer {
   export interface Props extends RouteComponentProps<void> {
@@ -46,9 +47,7 @@ export class Mentometer extends React.Component<Mentometer.Props, Mentometer.Sta
             closeSessionEndedDialog={closeSessionEndedDialog}
           />
         )}
-        {mentometerStep === 1 && (
-          <div>heja blåvitt</div>
-        )}
+        {mentometerStep === 1 && <WaitingStep connectedClients={connectedClients} />}
         {mentometerStep === 2 && <VoteStep voteStatistics={voteStatistics} userHasVoted={userHasVoted} connectedClients={connectedClients} vote={vote} />}
       </div>
     )
