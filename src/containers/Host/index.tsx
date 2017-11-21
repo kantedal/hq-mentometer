@@ -31,6 +31,14 @@ export class Host extends React.Component<Host.Props, Host.State> {
     createMentometer()
   }
 
+  componentWillLeave() {
+    console.log('component will leace')
+  }
+
+  componentWillEnter() {
+    console.log('component will enter')
+  }
+
   render() {
     const { hostStep, children, serverId, connectedClients, voteStatistics, userHasVoted, actions: { startSession, startVote, vote, finishSession, backToMenu } } = this.props
     return (

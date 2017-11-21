@@ -34,7 +34,7 @@ export class Mentometer extends React.Component<Mentometer.Props, Mentometer.Sta
       children, serverId, failMessage, mentometerStep, connectedClients, userHasVoted, voteStatistics,
       sessionEnded, actions: { changeServerId, connectToMentometer, closeSessionEndedDialog, vote } 
     } = this.props
-
+    console.log(this.props)
     return (
       <div>
         {mentometerStep === 0 && (

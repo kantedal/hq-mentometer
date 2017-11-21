@@ -82,3 +82,11 @@ input[type="checkbox"] {
 a:-webkit-any-link {
   text-decoration: none;
 }
+
+.switchWrapper {
+  position: relative;
+}
+
+.switchWrapper > div {
+  position: absolute;
+}

@@ -10,6 +10,7 @@ import { Menu } from '../Menu'
 import { Host } from '../Host'
 import { Mentometer } from '../Mentometer'
 import { withRouter } from 'react-router-dom'
+import { AnimatedSwitch } from 'react-router-transition'
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
@@ -27,15 +28,16 @@ class App extends React.Component<App.Props, App.State> {
 
   render() {
     const { todos, actions, children, actions: { backToMenu } } = this.props
-    console.log(actions)
     return (
       <div style={AppContainerStyle}>
         <Header back={() => backToMenu()} />
         <MainSection>
           <Switch>
-            {<Route path='/host' component={Host} />}
-            {<Route path='/mentometer' component={Mentometer} />}
-            {<Route exact={true} path='/' component={Menu} />}
+            <AnimatedSwitch atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} className={style.switchWrapper}>
+              {<Route path='/host' component={Host}/>}
+              {<Route path='/mentometer' component={Mentometer}/>}
+              {<Route exact path='/' component={Menu}/>}
+            </AnimatedSwitch>
           </Switch>
         </MainSection>
       </div>
