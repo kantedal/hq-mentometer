@@ -8,10 +8,6 @@ const initialState: HostState = {
 }
 
 export default handleActions<HostState, any>({
-  [Actions.MESSAGE]: (state, action) => {
-    console.log('message', action)
-    return { ...state }
-  },
   ['mentometerServerId']: (state, action) => {
     return { ...state, serverId: action.payload }
   },
@@ -22,7 +18,9 @@ export default handleActions<HostState, any>({
     return { ...state, hostStep: 1 }
   },
   [Actions.VOTE_UPDATED]: (state, action) => {
-    console.log(action.payload)
     return { ...state, voteStatistics: action.payload }
+  },
+  [Actions.FINISH_SESSION]: (state, action) => {    
+    return { ...state, hostStep: 0 }
   }
 }, initialState)

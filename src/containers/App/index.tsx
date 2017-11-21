@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as TodoActions from '../../actions/todos'
+import * as AppActions from '../../actions/app'
 import * as style from './style.css'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -14,7 +14,7 @@ import { withRouter } from 'react-router-dom'
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
     todos: TodoItemData[]
-    actions: typeof TodoActions
+    actions: typeof AppActions
   }
 
   export interface State {
@@ -26,11 +26,11 @@ export namespace App {
 class App extends React.Component<App.Props, App.State> {
 
   render() {
-    const { todos, actions, children } = this.props
+    const { todos, actions, children, actions: { backToMenu } } = this.props
     console.log(actions)
     return (
       <div style={AppContainerStyle}>
-        <Header />
+        <Header back={() => backToMenu()} />
         <MainSection>
           <Switch>
             {<Route path='/host' component={Host} />}
@@ -51,7 +51,7 @@ function mapStateToProps(state: RootState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(TodoActions as any, dispatch)
+    actions: bindActionCreators(AppActions as any, dispatch)
   }
 }
 

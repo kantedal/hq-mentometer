@@ -1,9 +1,9 @@
 import { combineReducers, Reducer } from 'redux'
-import todos from './todos'
 import socket from './socket'
 import host from './host'
 import mentometer from './mentometer'
 import vote from './vote'
+import { routerReducer } from 'react-router-redux'
 
 export interface RootState {
   todos: TodoStoreState
@@ -13,5 +13,5 @@ export interface RootState {
 }
 
 export default combineReducers<RootState>({
-  todos, socket, host, mentometer, vote
+  socket, host, mentometer, vote, router: routerReducer
 })

@@ -1,0 +1,12 @@
+.backButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+}
+
+.headerContent {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+}

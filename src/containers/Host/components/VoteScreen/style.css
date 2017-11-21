@@ -1,7 +1,7 @@
 .voteStartScreen {
-  width: calc(100% - 80px);
-  margin-left: 40px;
-  margin-right: 40px;
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .voteInfoText {
@@ -9,9 +9,10 @@
   text-align: center;
   font-weight: 200;
   font-family: Roboto;
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
   margin-bottom: 20px;
+  line-height: 30px;
 }
 
 .progressBar {
@@ -37,10 +38,32 @@
 .finishVoteButton {
   color: #fff !important;
   margin-top: 30px;
-  font-size: 28px !important;
+  font-size: 18px !important;
   width: 100%;
   font-weight: 400 !important;
 }
 
 .voteBox {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.voteStatistics {
+  text-align: center;
+  color: #fff;
+  font-family: Roboto;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.buttonBox {
+  display: flex;
+  direction: row; 
+  margin-top: 15px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
 }

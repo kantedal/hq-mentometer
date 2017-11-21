@@ -1,9 +1,4 @@
-export const ADD_TODO = 'ADD_TODO'
-export const EDIT_TODO = 'EDIT_TODO'
-export const DELETE_TODO = 'DELETE_TODO'
-export const COMPLETE_TODO = 'COMPLETE_TODO'
-export const COMPLETE_ALL = 'COMPLETE_ALL'
-export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
+export const BACK_TO_MENU = 'BACK_TO_MENU'
 
 // Socket
 export const MESSAGE = 'message'
@@ -13,6 +8,7 @@ export const CLIENT_CONNECTED = 'clientConnected'
 export const START_SESSION = 'START_SESSION'
 export const START_VOTE = 'server/startVote'
 export const CREATE_MENTOMETER = 'server/createMentometer'
+export const FINISH_SESSION = 'server/finishSession'
 
 // Mentometer
 export const CHANGE_SERVER_ID = 'CHANGE_SERVER_ID'

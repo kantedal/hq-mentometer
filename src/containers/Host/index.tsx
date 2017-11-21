@@ -32,11 +32,22 @@ export class Host extends React.Component<Host.Props, Host.State> {
   }
 
   render() {
-    const { hostStep, children, serverId, connectedClients, voteStatistics, userHasVoted, actions: { startSession, startVote, vote } } = this.props
+    const { hostStep, children, serverId, connectedClients, voteStatistics, userHasVoted, actions: { startSession, startVote, vote, finishSession, backToMenu } } = this.props
     return (
       <div>
         {hostStep === 0 && <ConnectionStep serverId={serverId} connectedClients={connectedClients} startSession={startSession}/>}
-        {hostStep === 1 && <VoteScreen startVote={startVote} vote={vote} voteStatistics={voteStatistics} connectedClients={connectedClients} userHasVoted={userHasVoted} />}
+        {hostStep === 1 && (
+          <VoteScreen
+            startVote={startVote} 
+            vote={vote} 
+            voteStatistics={voteStatistics} 
+            connectedClients={connectedClients} 
+            userHasVoted={userHasVoted} 
+            serverId={serverId}
+            finishSession={finishSession}
+            backToMenu={backToMenu}
+          />
+          )}
       </div>
     )
   }

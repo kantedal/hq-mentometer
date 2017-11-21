@@ -44,3 +44,19 @@
 
 .voteBox {
 }
+
+.voteStatistics {
+  text-align: center;
+  color: #fff;
+  font-family: Roboto;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.disconnectButton {
+  position: absolute !important;
+  width: 100% !important;
+  left: 0;
+  bottom: 0;
+  color: #fff !important;
+}

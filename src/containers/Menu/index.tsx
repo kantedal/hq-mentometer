@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as TodoActions from '../../actions/todos'
 import * as style from './style.css'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'

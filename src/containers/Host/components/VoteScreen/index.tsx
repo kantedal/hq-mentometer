@@ -10,30 +10,60 @@ export namespace VoteScreen {
     voteStatistics: IVoteStatistics
     connectedClients: number
     userHasVoted: boolean
+    serverId: string
     startVote: () => void
     vote: (voteId: number) => void
+    finishSession: () => void
+    backToMenu: () => void
   }
   export interface State {}
 }
 
 export class VoteScreen extends React.Component<VoteScreen.Props, VoteScreen.State> {
   render() {
-    const { vote, connectedClients, voteStatistics, userHasVoted, startVote } = this.props
+    const { vote, connectedClients, voteStatistics, userHasVoted, startVote, serverId, finishSession, backToMenu } = this.props
+    const totalVotes = voteStatistics.voteA + voteStatistics.voteB + voteStatistics.voteC
+
+    const finishSessionAndLogout = () => {
+      finishSession()
+      backToMenu()
+    }
     return (
       <div className={style.voteStartScreen}>
         <div className={style.voteInfoText}>
-          Click the button to start to enter vote mode for all conencted users
+          Click on the answer you find most likely. <br/>
+          <div style={{ display: 'flex', direction: 'row', marginTop: '15px' }}>
+            <div style={{ flexGrow: 1 }}>
+              Connected: <b>{connectedClients}</b>
+            </div>
+            <div style={{ flexGrow: 1 }}>
+              Server: <b>{serverId}</b>
+            </div>
+          </div>
         </div>
-  
-        <VoteBox vote={vote} voteStatistics={voteStatistics} connectedClients={connectedClients} userHasVoted={userHasVoted} />
-  
-        <Button onClick={() => startVote()} style={{marginTop: '50px'}} className={style.finishVoteButton}>
-          New vote
-        </Button>
 
-        <Button className={style.finishVoteButton}>
-          Finish session
-        </Button>
+        <div className={style.voteBox}> 
+          <VoteBox vote={vote} voteStatistics={voteStatistics} connectedClients={connectedClients} userHasVoted={userHasVoted} />
+        </div>
+
+        <div className={style.voteStatistics}>
+          {totalVotes} / {connectedClients + 1} users has voted.
+        </div>
+
+        <div className={style.buttonBox}>
+          <div style={{ flexGrow: 1 }}>
+            <Button onClick={() => startVote()} className={style.finishVoteButton}>
+              <i style={{marginRight: '5px'}} className='material-icons'>add</i>  
+              New vote
+            </Button>
+          </div>
+          <div onClick={finishSessionAndLogout} style={{ flexGrow: 1 }}>
+            <Button className={style.finishVoteButton}>
+              <i style={{marginRight: '5px'}} className='material-icons'>clear</i>  
+              Finish session
+            </Button>
+          </div>
+        </div>
       </div>
     )
   }

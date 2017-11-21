@@ -5,23 +5,25 @@ import { Router, Route, Switch } from 'react-router'
 import { createBrowserHistory } from 'history'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import { configureStore } from './store'
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import App from './containers/App'
 
-const store = configureStore()
 const history = createBrowserHistory()
+const store = configureStore(history)
+
 
 const AppComponent: any = App
 
 const theme = createMuiTheme({
   overrides: {},
-});
+})
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <Provider store={store}>
-      <Router history={history}>
+      <ConnectedRouter history={history}>
         <AppComponent />
-      </Router>
+      </ConnectedRouter>
     </Provider>
   </MuiThemeProvider>,
   document.getElementById('root')
